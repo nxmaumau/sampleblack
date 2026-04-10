@@ -435,6 +435,102 @@
       line-height: 1.8;
     }
 
+    /* works strip */
+    .works-highlight {
+      padding-top: 0;
+      margin-top: -48px;
+      position: relative;
+      z-index: 6;
+    }
+    .works-shell {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background:
+        linear-gradient(180deg, rgba(15,23,42,0.88), rgba(15,23,42,0.74));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+    }
+    .works-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 26px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .works-head h2 {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      margin-bottom: 6px;
+    }
+    .works-head p {
+      color: var(--sub);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      max-width: 700px;
+    }
+    .works-link {
+      color: var(--accent);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    .works-list {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .work-item {
+      display: grid;
+      grid-template-columns: 110px 180px minmax(0, 1fr) 140px;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 26px;
+      border-bottom: 1px solid var(--line);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .work-item:last-child {
+      border-bottom: none;
+    }
+    .work-item:hover {
+      background: rgba(255,255,255,0.03);
+    }
+    .work-year {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+    }
+    .work-type {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.16);
+      background: rgba(255,255,255,0.03);
+      color: var(--sub);
+      font-size: 0.84rem;
+      width: fit-content;
+    }
+    .work-main strong {
+      display: block;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .work-main span {
+      color: var(--sub);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .work-meta {
+      color: var(--sub);
+      font-size: 0.88rem;
+      text-align: right;
+      white-space: nowrap;
+    }
+
     .panel::before {
       content: "";
       position: absolute;
@@ -628,6 +724,26 @@
     }
 
     @media (max-width: 960px) {
+      .works-highlight {
+        margin-top: -22px;
+      }
+      .works-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .work-item {
+        grid-template-columns: 96px 1fr;
+        align-items: start;
+      }
+      .work-main {
+        grid-column: 1 / -1;
+      }
+      .work-meta {
+        grid-column: 2;
+        text-align: left;
+        white-space: normal;
+      }
+
       .menu-btn { display: block; }
       .header-cta { display: none; }
 
@@ -686,6 +802,7 @@
       .hero {
         align-items: flex-start;
       }
+      
       .hero-bg {
         background:
           linear-gradient(180deg, rgba(5,11,22,0.92) 0%, rgba(5,11,22,0.78) 40%, rgba(5,11,22,0.88) 100%),
@@ -736,6 +853,31 @@
     }
 
     @media (max-width: 540px) {
+      .works-highlight {
+        margin-top: -10px;
+      }
+      .works-head {
+        padding: 18px 18px 16px;
+      }
+      .work-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 16px 18px;
+      }
+      .work-meta {
+        grid-column: auto;
+      }
+      .work-year {
+        font-size: 0.88rem;
+      }
+      .work-main strong {
+        font-size: 0.95rem;
+      }
+      .work-main span,
+      .works-head p {
+        font-size: 0.88rem;
+      }
+
       .hero-inner { padding: 42px 0 22px; }
       .eyebrow {
         margin-bottom: 14px;
@@ -775,8 +917,9 @@
 
       <nav id="nav">
         <ul>
+          <li><a href="#works">実績</a></li>
           <li><a href="#service">事業内容</a></li>
-          <li><a href="#flow">対応の流れ</a></li>
+<!--          <li><a href="#flow">対応の流れ</a></li> -->
           <li><a href="#recruit">採用情報</a></li>
           <li><a href="#company">会社概要</a></li>
         </ul>
@@ -811,15 +954,15 @@
           オフィスLAN工事を中心に、現地調査、設置、更新なども対応。
           現場基準の判断力で、安定した設備運用を支えます。
         </p>
-
+<!--
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">お問い合わせ</a>
           <a href="#service" class="btn btn-secondary">事業内容を見る</a>
         </div>
-
+-->
         <div class="hero-tags">
+          <span class="tag">アピールポイント</span>
           <span class="tag">通信設備施工</span>
-<!--          <span class="tag">電気工事</span> -->
           <span class="tag">保守対応</span>
           <span class="tag">法人向け</span>
         </div>
@@ -849,11 +992,57 @@
     </div>
   </section>
 
+  <section id="works" class="works-highlight">
+    <div class="container">
+      <div class="works-shell fade">
+        <div class="works-head">
+          <div>
+            <h2>実績</h2>
+            <p>IP電話からPC最大○○台まで、<br>オフィスの通信設備全般に関して15年以上の安心の実績を積み重ねてきました。</p>
+          </div>
+          <a href="#contact" class="works-link">ご相談はこちら</a>
+        </div>
+
+        <div class="works-list">
+          <article class="work-item">
+            <div class="work-year">2026.01</div>
+            <div class="work-type">実績ジャンル</div>
+            <div class="work-main">
+              <strong>実績タイトル</strong>
+              <span>案件の補足。この欄は要るか微妙</span>
+            </div>
+            <div class="work-meta">案件地</div>
+          </article>
+
+          <article class="work-item">
+            <div class="work-year">2023-2025</div>
+            <div class="work-type">保守・障害対応</div>
+            <div class="work-main">
+              <strong>通信障害時の現地確認・復旧支援</strong>
+              <span>原因切り分け、既設確認、暫定対応を含めた現場支援を実施。</span>
+            </div>
+            <div class="work-meta">関東一円</div>
+          </article>
+
+          <article class="work-item">
+            <div class="work-year">2025.03<br>～2025.10</div>
+            <div class="work-type">電気工事</div>
+            <div class="work-main">
+              <strong>通信設備に付随する電源まわりの更新工事</strong>
+              <span>設備更新と分離せず、関連工事を含めて工程全体を整理。</span>
+            </div>
+            <div class="work-meta">東京都内</div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="service">
     <div class="container">
       <div class="section-head fade">
         <h2>事業内容</h2>
-        <p>通信インフラと電気工事の両面から、現場対応を中心に実務的な支援を行います。抽象語で飾るより、何を扱えるかが先です。</p>
+        <p>事業内容に関すること。次段の対応の流れと一緒にした方がクールかも。</p>
       </div>
 
       <div class="grid-4">
@@ -881,59 +1070,11 @@
     </div>
   </section>
 
-  <section id="recruit">
-    <div class="container">
-      <div class="section-head fade">
-        <h2>採用情報</h2>
-        <p>現場で判断できる人を求めています。資格や肩書きよりも、状況に応じて手を動かせるかを見ます。</p>
-      </div>
-
-      <div class="grid-3">
-        <article class="panel fade">
-          <h3>募集職種</h3>
-          <p>希望する職種について</p>
-        </article>
-        <article class="panel fade">
-          <h3>求める人物像</h3>
-          <p>人物像について</p>
-        </article>
-        <article class="panel fade">
-          <h3>働き方</h3>
-          <p>提示する条件等</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="company">
-    <div class="container">
-      <div class="section-head fade">
-        <h2>会社概要</h2>
-<!--        <p>最低限の情報だけ載せる。ここを盛ると逆に信用を落とす。</p> -->
-      </div>
-
-      <div class="panel company-card fade">
-        <div class="company-row">
-          <strong>会社名</strong>
-          <span>会社名</span>
-        </div>
-        <div class="company-row">
-          <strong>事業内容</strong>
-          <span>オフィスLAN工事</span>
-        </div>
-        <div class="company-row">
-          <strong>所在地</strong>
-          <span>東京都〇〇区</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="flow">
     <div class="container">
       <div class="section-head fade">
         <h2>対応の流れ</h2>
-        <p>軽くでも事業者にむけて</p>
+        <p>流れを見せるのは大事そう。項目として要るかは微妙</p>
       </div>
 
       <div class="flow">
@@ -961,15 +1102,67 @@
     </div>
   </section>
 
+  <section id="recruit">
+    <div class="container">
+      <div class="section-head fade">
+        <h2>採用情報</h2>
+        <p>現場で判断できる人を求めています。資格や肩書きよりも、状況に応じて手を動かせるかを見ます。</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="panel fade">
+          <h3>募集職種</h3>
+          <p>希望する職種について</p>
+        </article>
+        <article class="panel fade">
+          <h3>求める人物像</h3>
+          <p>人物像について</p>
+        </article>
+        <article class="panel fade">
+          <h3>働き方</h3>
+          <p>提示する条件等</p>
+        </article>
+        <article class="panel fade">
+          <h3></h3>
+          <p>ほかにも記載したいことがあれば</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="company">
+    <div class="container">
+      <div class="section-head fade">
+        <h2>会社概要</h2>
+        <p>軽い説明とかのせてもいいかも</p>
+      </div>
+
+      <div class="panel company-card fade">
+        <div class="company-row">
+          <strong>会社名</strong>
+          <span>会社名</span>
+        </div>
+        <div class="company-row">
+          <strong>事業内容</strong>
+          <span>通信設備施工</span>
+        </div>
+        <div class="company-row">
+          <strong>所在地</strong>
+          <span>東京都〇〇区</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <div class="cta-box fade">
         <div>
-          <h2>お問い合わせ・採用応募</h2>
-          <p>仕事に関するご相談・採用への応募は、こちらからお問い合わせください。</p>
+          <h2>ご相談・採用応募</h2>
+          <p>案件に関するご相談・採用への応募は、こちらからお問い合わせください。</p>
         </div>
         <div>
-          <a href="mailto:info@example.com" class="btn btn-primary">メールで問い合わせる</a>
+          <a href="mailto:info@example.com" class="btn btn-primary">お問い合わせ</a>
         </div>
       </div>
     </div>
@@ -977,7 +1170,7 @@
 
   <footer>
     <div class="container">
-      <p>© 2026 会社名 All Rights Reserved.</p>
+      <p>© 2026 会社名. All Rights Reserved.</p>
     </div>
   </footer>
 
