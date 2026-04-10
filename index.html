@@ -402,6 +402,102 @@
     .grid-4 { grid-template-columns: repeat(4, 1fr); }
     .grid-3 { grid-template-columns: repeat(3, 1fr); }
 
+    /* service structure list */
+    .service-shell {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(15,23,42,0.72), rgba(15,23,42,0.58));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .service-list {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .service-item {
+      display: grid;
+      grid-template-columns: minmax(220px, 280px) 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--line);
+    }
+    .service-item:last-child {
+      border-bottom: none;
+    }
+    .service-no {
+      display: none;
+      color: var(--accent);
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      padding-top: 4px;
+    }
+    .service-title h3 {
+      font-size: 1.02rem;
+      line-height: 1.45;
+      margin-bottom: 4px;
+    }
+    .service-title span {
+      color: var(--sub);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .service-body p {
+      color: var(--sub);
+      font-size: 0.95rem;
+      line-height: 1.85;
+    }
+    .service-flow {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 18px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+    }
+    .service-flow::before {
+      content: "";
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 34px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(31,184,232,0.12), rgba(31,184,232,0.72), rgba(79,124,255,0.14));
+      z-index: 0;
+    }
+    .service-flow-step {
+      position: relative;
+      z-index: 1;
+      padding: 18px 20px 20px;
+      min-height: 92px;
+      border-right: 1px solid var(--line);
+    }
+    .service-flow-step:last-child {
+      border-right: none;
+    }
+    .service-flow-step strong {
+      display: block;
+      color: var(--accent);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .service-flow-step span {
+      display: block;
+      color: var(--text);
+      font-size: 0.96rem;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+    .service-flow-step p {
+      color: var(--sub);
+      font-size: 0.85rem;
+      line-height: 1.65;
+    }
+
     .panel {
       position: relative;
       background: linear-gradient(180deg, rgba(15,23,42,0.72), rgba(15,23,42,0.58));
@@ -721,6 +817,10 @@
       .grid-4 { grid-template-columns: repeat(2, 1fr); }
       .flow { grid-template-columns: repeat(2, 1fr); }
       .flow::before { display: none; }
+      .service-item {
+        grid-template-columns: 220px 1fr;
+        padding: 22px 24px;
+      }
     }
 
     @media (max-width: 960px) {
@@ -788,6 +888,28 @@
       .card-b { top: 126px; left: 0; }
       .card-c { bottom: -10px; right: 24px; }
 
+      .service-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .service-flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .service-flow::before {
+        left: 10%;
+        right: 10%;
+        top: 34px;
+      }
+      .service-flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .service-flow-step:nth-child(2) {
+        border-right: none;
+      }
+      .service-flow-step:nth-child(-n+2) {
+        border-bottom: 1px solid var(--line);
+      }
+
       .grid-3,
       .stats-row,
       .cta-box { grid-template-columns: 1fr; }
@@ -802,7 +924,7 @@
       .hero {
         align-items: flex-start;
       }
-      
+      /* ▼ 修正箇所：ここがライトテーマのままだった */
       .hero-bg {
         background:
           linear-gradient(180deg, rgba(5,11,22,0.92) 0%, rgba(5,11,22,0.78) 40%, rgba(5,11,22,0.88) 100%),
@@ -902,6 +1024,34 @@
       }
       .particle:nth-child(n+3) { display: none; }
       .section-head { margin-bottom: 24px; }
+      .service-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 18px 18px;
+      }
+      .service-no {
+        padding-top: 0;
+        font-size: 0.84rem;
+      }
+      .service-flow {
+        grid-template-columns: 1fr;
+      }
+      .service-flow::before {
+        left: 12%;
+        right: 12%;
+        top: 32px;
+      }
+      .service-flow {
+        grid-template-columns: 1fr;
+      }
+      .service-flow-step {
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+      .service-flow-step:last-child {
+        border-bottom: none;
+      }
       .panel,
       .stat-card,
       .flow-card { padding: 20px; border-radius: 20px; }
@@ -927,7 +1077,6 @@
         <ul>
           <li><a href="#works">実績</a></li>
           <li><a href="#service">事業内容</a></li>
-<!--          <li><a href="#flow">対応の流れ</a></li> -->
           <li><a href="#recruit">採用情報</a></li>
           <li><a href="#company">会社概要</a></li>
         </ul>
@@ -959,7 +1108,7 @@
         <div class="eyebrow">Communication Infrastructure</div>
         <h1>通信を、<br>現場で止めない。</h1>
         <p>
-          オフィスLAN工事を中心に、現地調査、設置、更新なども対応。
+          通信インフラ施工・電気工事を中心に、現地調査、設置、更新、保守まで一貫対応。
           現場基準の判断力で、安定した設備運用を支えます。
         </p>
 <!--
@@ -970,8 +1119,7 @@
 -->
         <div class="hero-tags">
           <span class="tag">アピールポイント</span>
-          <span class="tag">通信設備施工</span>
-          <span class="tag">保守対応</span>
+          <span class="tag">オフィスLAN工事</span>
           <span class="tag">法人向け</span>
         </div>
       </div>
@@ -1007,29 +1155,30 @@
           <div>
             <h2>実績</h2>
             <p>IP電話からPC最大○○台まで、<br>オフィスの通信設備全般に関して15年以上の安心の実績を積み重ねてきました。</p>
+            </p>
           </div>
           <a href="#contact" class="works-link">ご相談はこちら</a>
         </div>
 
         <div class="works-list">
           <article class="work-item">
-            <div class="work-year">2026.01</div>
-            <div class="work-type">実績ジャンル</div>
+            <div class="work-year">2026</div>
+            <div class="work-type">ジャンル</div>
             <div class="work-main">
-              <strong>実績タイトル</strong>
-              <span>案件の補足。この欄は要るか微妙</span>
+              <strong>内容</strong>
+              <span>説明。この欄は要るか微妙</span>
             </div>
             <div class="work-meta">案件地</div>
           </article>
 
           <article class="work-item">
-            <div class="work-year">2023-2025</div>
+            <div class="work-year">2025</div>
             <div class="work-type">保守・障害対応</div>
             <div class="work-main">
               <strong>通信障害時の現地確認・復旧支援</strong>
               <span>原因切り分け、既設確認、暫定対応を含めた現場支援を実施。</span>
             </div>
-            <div class="work-meta">関東一円</div>
+            <div class="work-meta">秋田県</div>
           </article>
 
           <article class="work-item">
@@ -1050,62 +1199,78 @@
     <div class="container">
       <div class="section-head fade">
         <h2>事業内容</h2>
-        <p>事業内容に関すること。次段の対応の流れと一緒にした方がクールかも。</p>
+        <p>対応できる内容を一覧化。ちょっと説明がくどいかも</p>
       </div>
 
-      <div class="grid-4">
-        <article class="panel fade">
-          <div class="service-icon"></div>
-          <h3>通信インフラ施工</h3>
-          <p>通信設備の設置、配線、更新工事など、既設環境を踏まえた現場対応を行います。</p>
-        </article>
-        <article class="panel fade">
-          <div class="service-icon"></div>
-          <h3>電気工事</h3>
-          <p>設備に付随する電源まわりや関連工事にも対応し、施工全体の調整コストを減らします。</p>
-        </article>
-        <article class="panel fade">
-          <div class="service-icon"></div>
-          <h3>現地調査・設計補助</h3>
-          <p>施工前の確認、課題抽出、段取り整理まで、机上だけで終わらない支援を行います。</p>
-        </article>
-        <article class="panel fade">
-          <div class="service-icon"></div>
-          <h3>保守・更新対応</h3>
-          <p>障害対応や更新工事まで視野に入れ、継続運用を前提にした実務支援を提供します。</p>
-        </article>
-      </div>
-    </div>
-  </section>
+      <div class="service-shell fade">
+        <div class="service-list">
+          <article class="service-item">
+            <div class="service-no">01</div>
+            <div class="service-title">
+              <h3>通信インフラ施工</h3>
+              <span>配線・機器設置・更新工事</span>
+            </div>
+            <div class="service-body">
+              <p>通信設備の設置、配線、更新工事など、既設環境を踏まえた現場対応を行います。部分最適ではなく、運用側の都合も踏まえて現場で成立する形に落とします。</p>
+            </div>
+          </article>
 
-  <section id="flow">
-    <div class="container">
-      <div class="section-head fade">
-        <h2>対応の流れ</h2>
-        <p>流れを見せるのは大事そう。項目として要るかは微妙</p>
-      </div>
+          <article class="service-item">
+            <div class="service-no">02</div>
+            <div class="service-title">
+              <h3>電気工事</h3>
+              <span>電源まわり・関連工事</span>
+            </div>
+            <div class="service-body">
+              <p>設備に付随する電源まわりや関連工事にも対応し、施工全体の調整コストを減らします。通信設備だけを切り離さず、周辺条件を含めて整理します。</p>
+            </div>
+          </article>
 
-      <div class="flow">
-        <article class="flow-card fade">
-          <div class="flow-step">1</div>
-          <h3>ご相談</h3>
-          <p>設備状況や課題感を確認し、まず何を整理すべきかを切り分けます。</p>
-        </article>
-        <article class="flow-card fade">
-          <div class="flow-step">2</div>
-          <h3>現地確認</h3>
-          <p>既設環境、施工条件、制約事項を確認し、机上の見落としを減らします。</p>
-        </article>
-        <article class="flow-card fade">
-          <div class="flow-step">3</div>
-          <h3>施工・更新</h3>
-          <p>段取りと安全管理を前提に、現場で無理のない施工を進めます。</p>
-        </article>
-        <article class="flow-card fade">
-          <div class="flow-step">4</div>
-          <h3>保守・継続対応</h3>
-          <p>施工後の状態も踏まえ、更新や障害対応まで継続して支援します。</p>
-        </article>
+          <article class="service-item">
+            <div class="service-no">03</div>
+            <div class="service-title">
+              <h3>現地調査・設計補助</h3>
+              <span>事前確認・課題整理</span>
+            </div>
+            <div class="service-body">
+              <p>施工前の確認、課題抽出、段取り整理まで、机上だけで終わらない支援を行います。既設環境を見ないまま進めると後工程で破綻しやすいため、ここは軽視しません。</p>
+            </div>
+          </article>
+
+          <article class="service-item">
+            <div class="service-no">04</div>
+            <div class="service-title">
+              <h3>保守・更新対応</h3>
+              <span>障害対応・継続支援</span>
+            </div>
+            <div class="service-body">
+              <p>障害対応や更新工事まで視野に入れ、継続運用を前提にした実務支援を提供します。施工して終わりではなく、その後も含めた体制を前提に考えています。</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="service-flow">
+          <div class="service-flow-step">
+            <strong>01</strong>
+            <span>ご相談・お見積り</span>
+            <p>課題と改善案</p>
+          </div>
+          <div class="service-flow-step">
+            <strong>02</strong>
+            <span>現地確認</span>
+            <p>条件・制約の把握</p>
+          </div>
+          <div class="service-flow-step">
+            <strong>03</strong>
+            <span>施工・更新</span>
+            <p>無理のない工程で実施</p>
+          </div>
+          <div class="service-flow-step">
+            <strong>04</strong>
+            <span>保守・障害対応</span>
+            <p>継続運用まで支援</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1114,7 +1279,7 @@
     <div class="container">
       <div class="section-head fade">
         <h2>採用情報</h2>
-        <p>現場で判断できる人を求めています。資格や肩書きよりも、状況に応じて手を動かせるかを見ます。</p>
+        <p>採用に関する補足</p>
       </div>
 
       <div class="grid-3">
@@ -1124,15 +1289,11 @@
         </article>
         <article class="panel fade">
           <h3>求める人物像</h3>
-          <p>人物像について</p>
+          <p>求める人物像について</p>
         </article>
         <article class="panel fade">
           <h3>働き方</h3>
           <p>提示する条件等</p>
-        </article>
-        <article class="panel fade">
-          <h3></h3>
-          <p>ほかにも記載したいことがあれば</p>
         </article>
       </div>
     </div>
@@ -1152,7 +1313,7 @@
         </div>
         <div class="company-row">
           <strong>事業内容</strong>
-          <span>通信設備施工</span>
+          <span>通信設備</span>
         </div>
         <div class="company-row">
           <strong>所在地</strong>
@@ -1162,6 +1323,8 @@
     </div>
   </section>
 
+  
+
   <section id="contact">
     <div class="container">
       <div class="cta-box fade">
@@ -1170,7 +1333,7 @@
           <p>案件に関するご相談・採用への応募は、こちらからお問い合わせください。</p>
         </div>
         <div>
-          <a href="mailto:info@example.com" class="btn btn-primary">お問い合わせ</a>
+          <a href="mailto:info@example.com" class="btn btn-primary">メールで問い合わせる</a>
         </div>
       </div>
     </div>
