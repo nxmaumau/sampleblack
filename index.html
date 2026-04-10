@@ -574,6 +574,28 @@
       display: grid;
       grid-template-columns: 1fr;
     }
+    .works-actions {
+      display: flex;
+      justify-content: center;
+      padding: 18px 26px 24px;
+      border-top: 1px solid var(--line);
+    }
+    .works-more-btn {
+      appearance: none;
+      border: 1px solid rgba(148,163,184,0.18);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      min-height: 44px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .works-more-btn:hover {
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-1px);
+    }
     .work-item {
       display: grid;
       grid-template-columns: 110px 180px minmax(0, 1fr) 140px;
@@ -1160,7 +1182,7 @@
           <a href="#contact" class="works-link">ご相談はこちら</a>
         </div>
 
-        <div class="works-list">
+        <div class="works-list" id="worksList">
           <article class="work-item">
             <div class="work-year">2026</div>
             <div class="work-type">ジャンル</div>
@@ -1190,6 +1212,20 @@
             </div>
             <div class="work-meta">東京都内</div>
           </article>
+
+          <article class="work-item">
+            <div class="work-year">2025.03<br>～2025.10</div>
+            <div class="work-type">電気工事</div>
+            <div class="work-main">
+              <strong>通信設備に付随する電源まわりの更新工事</strong>
+              <span>設備更新と分離せず、関連工事を含めて工程全体を整理。</span>
+            </div>
+            <div class="work-meta">東京都内</div>
+          </article>
+        </div>
+
+        <div class="works-actions">
+          <button type="button" class="works-more-btn" id="worksMoreBtn">▼ もっと見る</button>
         </div>
       </div>
     </div>
@@ -1366,6 +1402,36 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+    const worksList = document.getElementById('worksList');
+    const worksMoreBtn = document.getElementById('worksMoreBtn');
+    const worksItems = worksList ? Array.from(worksList.querySelectorAll('.work-item')) : [];
+    const worksVisibleCount = 3;
+    let worksExpanded = false;
+
+    function updateWorksVisibility() {
+      if (!worksList || !worksMoreBtn) return;
+
+      worksItems.forEach((item, index) => {
+        item.style.display = (!worksExpanded && index >= worksVisibleCount) ? 'none' : '';
+      });
+
+      if (worksItems.length <= worksVisibleCount) {
+        worksMoreBtn.style.display = 'none';
+        return;
+      }
+
+      worksMoreBtn.textContent = worksExpanded ? '▲ 閉じる' : '▼ もっと見る';
+    }
+
+    if (worksMoreBtn) {
+      worksMoreBtn.addEventListener('click', () => {
+        worksExpanded = !worksExpanded;
+        updateWorksVisibility();
+      });
+    }
+
+    updateWorksVisibility();
   </script>
 </body>
 </html>
